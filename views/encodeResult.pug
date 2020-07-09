@@ -4,7 +4,13 @@ block content
     div.row
         div.col
             h2 Encoded ILP Packet
-            p= result.fulfilment
-            p= result.ilpPacket
-            p= result.condition
+            h5 ILP Packet
+            p Provided in the response of the quote.
+            pre.wrapped= result.ilpPacket
+            h5 Condition
+            p Provided in the quote response. This is a hash of the fulfillment known only to the payee FSP.
+            pre.wrapped= result.condition
+            h5 Fulfillment
+            p Provided by the payee FSP after a successful committed transaction and validated by the switch.
+            pre.wrapped= result.fulfilment
             button.btn.btn-primary(onclick='window.history.back()') Back
