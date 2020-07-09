@@ -7,5 +7,6 @@ block content
             h3 Packet
             pre= JSON.stringify(packet, undefined, 2)
             h3 Packet Data
+            p This is the base64 decoded data from the packet above.
             pre= JSON.stringify(packetData, undefined, 2)
             button.btn.btn-primary(onclick='window.history.back()') Back
