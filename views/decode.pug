@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    div.row
+        div.col
+            h2 Decode ILP Packet
+            form(action='/decode' method='post')
+                div.form-group
+                    label(for='ilpPacket') ILP Packet
+                    textarea.form-control#ilpPacket(name='ilpPacket' rows=20)
+                    small.form-text.text-muted ILP Packet data.
+                input.btn.btn-primary(type='submit' value='Decode')

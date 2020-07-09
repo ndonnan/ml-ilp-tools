@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    div.row
+        div.col
+            h2 Encoded ILP Packet
+            p= result.fulfilment
+            p= result.ilpPacket
+            p= result.condition
+            button.btn.btn-primary(onclick='window.history.back()') Back

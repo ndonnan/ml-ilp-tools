@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    div.row
+        div.col
+            h2 Encode ILP Packet
+            form(action='/encode' method='post')
+                div.form-group
+                    label(for='ilpSecret') ILP Secret
+                    input.form-control#ilpSecret(type='text' name='ilpSecret' placeholder='ILP Secret' value='Quaixohyaesahju3thivuiChai5cahng' required=true)
+                    small.form-text.text-muted The ILP secret known only to the payee FSP.
+                div.form-group
+                    label(for='quoteRequest') Quote Request
+                    textarea.form-control#quoteRequest(name='quoteRequest' rows=20)= defaultQuoteRequest
+                    small.form-text.text-muted Quote request object sent from the payer FSP.
+                div.form-group
+                    label(for='quoteResponse') Quote Response
+                    textarea.form-control#quoteResponse(name='quoteResponse' rows=7)= defaultQuoteResponse
+                    small.form-text.text-muted Quote response object generated at the payee FSP.
+                input.btn.btn-primary(type='submit' value='Encode')
