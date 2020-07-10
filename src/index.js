@@ -48,8 +48,8 @@ app.get('/', (req, res) => {
 }`;
     const defaultQuoteResponse = `{
     "transferAmount": {
-        "currency": "USD",
-        "amount": "60"
+        "amount": "60",
+        "currency": "USD"
     },
     "note": "Test transfer"
 }`;
