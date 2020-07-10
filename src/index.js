@@ -74,5 +74,30 @@ app.post('/decode', (req, res) => {
     res.render('decodeResult', { packet, packetData });
 });
 
+app.get('/sign', (req, res) => {
+    res.render('sign');
+});
+
+app.post('/sign', (req, res) => {
+    const ilp = new Ilp({ secret: req.body.ilpSecret });
+    const fulfilment = ilp.calculateFulfil(req.body.ilpPacket);
+    const condition = ilp.calculateConditionFromFulfil(fulfilment);
+    const binaryPacket = Buffer.from(req.body.ilpPacket, 'base64');
+    const packet = ilpPacket.deserializeIlpPacket(binaryPacket);
+    const packetData = JSON.parse(base64url.decode(Buffer.from(packet.data.data, 'base64').toString()));
+    packet.data.data = 'Truncated for display, see below...';
+    res.render('signResult', { fulfilment, condition, packet, packetData });
+});
+
+app.get('/hash', (req, res) => {
+    res.render('hash');
+});
+
+app.post('/hash', (req, res) => {
+    const ilp = new Ilp({ secret: 'test' });
+    const condition = ilp.calculateConditionFromFulfil(req.body.fulfilment);
+    res.render('hashResult', { condition, fulfilment: req.body.fulfilment });
+});
+
 const port = process.env.PORT ? process.env.PORT : 3000;
 app.listen(port, () => console.log(`App listening at http://localhost:${port}`));

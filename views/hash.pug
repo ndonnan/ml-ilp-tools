@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    div.row
+        div.col
+            h2 Hash a Fulfilment
+            p Generate a condition from a fulfilment
+            form(action='/hash' method='post')
+                div.form-group
+                    label(for='fulfilment') Fulfilment
+                    input.form-control#fulfilment(type='text' name='fulfilment' placeholder='Fulfilment' required=true)
+                    small.form-text.text-muted The fulfilment to generate a hash for.
+                input.btn.btn-primary(type='submit' value='Hash')

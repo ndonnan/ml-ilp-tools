@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    div.row
+        div.col
+            h2 Sign ILP Packet
+            p Sign an existing ILP packet using a secret in order to generate a fulfilment and condition
+            form(action='/sign' method='post')
+                div.form-group
+                    label(for='ilpSecret') ILP Secret
+                    input.form-control#ilpSecret(type='text' name='ilpSecret' placeholder='ILP Secret' value='Quaixohyaesahju3thivuiChai5cahng' required=true)
+                    small.form-text.text-muted The ILP secret known only to the payee FSP.
+                div.form-group
+                    label(for='ilpPacket') ILP Packet
+                    textarea.form-control#ilpPacket(name='ilpPacket' rows=14)
+                    small.form-text.text-muted ILP Packet data.
+                input.btn.btn-primary(type='submit' value='Sign')
